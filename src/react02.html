@@ -10,13 +10,27 @@
 <body>
 	<div id="example"></div>
 	<script type="text/babel">
-		var HtmlCompent = React.createClass({
+		var Htmlcomponent = React.createClass({
 			render:function () {
-				return <h1>hello,{this.props.name}</h1>
+				return (
+					<div>
+						<h1>hello,{this.props.name}</h1>
+						<ol>
+							{
+								React.Children.map(this.props.children, function (child) {
+									return <li>{child}</li>;
+								})
+							}
+						</ol>
+					</div>
+				)
 			}
 		});
 		ReactDOM.render(
-			<HtmlCompent name="react"/>,
+			<Htmlcomponent name="react">
+				<span>hello</span>
+				<span>world</span>
+			</Htmlcomponent>,
 			document.getElementById("example")
 		);
 	</script>
